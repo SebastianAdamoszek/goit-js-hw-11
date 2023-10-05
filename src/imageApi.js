@@ -15,10 +15,10 @@ export async function searchImages(query) {
   }
 }
 
-export async function loadMoreImages(query, currentPage) {
+export async function loadMoreImages(query, page) {
   try {
     // Tworzenie URL i wysyłanie zapytania do API
-    const URL = `https://pixabay.com/api/?key=${API_KEY}&q=${encodeURIComponent(query)}&image_type=photo&orientation=horizontal&safesearch=true&page=${currentPage}`;
+    const URL = `https://pixabay.com/api/?key=${API_KEY}&q=${encodeURIComponent(query)}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}`;
     const response = await axios.get(URL);
     const data = response.data;
     return data.hits; // Zwracanie tylko wyników z API

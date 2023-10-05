@@ -48,7 +48,7 @@ searchForm.addEventListener('submit', async function (e) {
   }
 });
 
-let currentPage = 1;
+let page = 1;
 
 loadMoreBtn.addEventListener('click', async () => {
   const searchInput = searchForm.querySelector('input[name="searchQuery"]');
@@ -56,11 +56,11 @@ loadMoreBtn.addEventListener('click', async () => {
 
   if (query.length > 0) {
     try {
-      const images = await loadMoreImages(query, currentPage);
+      const images = await loadMoreImages(query, page);
       if (images.length === 0) {
         Notiflix.Notify.info('No more images to load.');
       } else {
-        currentPage++;
+        page++;
         displayImages(images);
       }
     } catch (error) {
