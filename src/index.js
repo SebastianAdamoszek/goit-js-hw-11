@@ -3,10 +3,10 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { createImageCard } from './imageCard';
 import { searchImages, loadMoreImages } from './imageApi';
-
 const gallery = document.querySelector('.gallery');
+const photoCard = document.querySelector('.photo-card');
+  photoCard.style.display = 'none';
 const loadMoreBtn = document.querySelector('.load-more');
-
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionPosition: 'bottom',
@@ -15,10 +15,12 @@ const lightbox = new SimpleLightbox('.gallery a', {
 
 loadMoreBtn.style.display = 'none';
 
-async function displayImages(images) {
-  images.forEach((image) => {
+function displayImages(images) {
+  images.forEach(image => {
     gallery.appendChild(createImageCard(image));
   });
+
+  photoCard.style.display = 'block';
   loadMoreBtn.style.display = 'block';
   lightbox.refresh();
 }
@@ -41,6 +43,8 @@ searchForm.addEventListener('submit', async function (e) {
     try {
       const images = await searchImages(query);
       displayImages(images);
+
+      
     } catch (error) {
       console.error(error.message);
       Notiflix.Notify.failure('An error occurred. Please try again later.');
@@ -48,6 +52,7 @@ searchForm.addEventListener('submit', async function (e) {
   }
 });
 
+// Obsługa przycisku "Load more"
 let page = 1;
 
 loadMoreBtn.addEventListener('click', async () => {
@@ -56,16 +61,20 @@ loadMoreBtn.addEventListener('click', async () => {
 
   if (query.length > 0) {
     try {
-      const images = await loadMoreImages(query, page);
+      // Ładowanie kolejnych stron
+      const images = await searchImages(query, page);
       if (images.length === 0) {
         Notiflix.Notify.info('No more images to load.');
       } else {
         page++;
         displayImages(images);
+      
       }
     } catch (error) {
       console.error(error.message);
-      Notiflix.Notify.failure('An error occurred while loading more images. Please try again later.');
+      Notiflix.Notify.failure(
+        'An error occurred while loading more images. Please try again later.'
+      );
     }
   }
 });
