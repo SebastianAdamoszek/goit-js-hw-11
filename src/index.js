@@ -2,7 +2,7 @@ import Notiflix from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { createImageCard } from './imageCard';
-import { searchImages, loadMoreImages } from './imageApi';
+import { searchImages } from './imageApi';
 const gallery = document.querySelector('.gallery');
 const photoCard = document.querySelector('.photo-card');
   photoCard.style.display = 'none';
@@ -32,19 +32,20 @@ async function clearGallery() {
 }
 
 const searchForm = document.getElementById('search-form');
+let query = ''; // Zmienna przechowujaca wartość pola input
 
 searchForm.addEventListener('submit', async function (e) {
   e.preventDefault();
   const searchInput = e.target.querySelector('input[name="searchQuery"]');
-  const query = searchInput.value.trim();
+  query = searchInput.value.trim(); // Przypisuje wartość do zmiennej
 
   if (query.length > 0) {
     clearGallery();
     try {
       const images = await searchImages(query);
       displayImages(images);
+      searchInput.value = ''; // Czyszcze pole input
 
-      
     } catch (error) {
       console.error(error.message);
       Notiflix.Notify.failure('An error occurred. Please try again later.');
@@ -56,10 +57,7 @@ searchForm.addEventListener('submit', async function (e) {
 let page = 2;
 
 loadMoreBtn.addEventListener('click', async () => {
-  const searchInput = searchForm.querySelector('input[name="searchQuery"]');
-  const query = searchInput.value.trim();
-
-  if (query.length > 0) {
+  if (query.length > 0) { // Użyj zapamiętanej wartości
     try {
       // Ładowanie kolejnych stron
       const images = await searchImages(query, page);
@@ -68,7 +66,6 @@ loadMoreBtn.addEventListener('click', async () => {
       } else {
         page++;
         displayImages(images);
-      
       }
     } catch (error) {
       console.error(error.message);
@@ -78,3 +75,4 @@ loadMoreBtn.addEventListener('click', async () => {
     }
   }
 });
+
