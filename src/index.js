@@ -19,27 +19,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.querySelector('input[name="searchQuery"]');
 
   // Funkcja do aktualizacji dostępności przycisku
-//  function updateSearchButtonState() {
-//    if (searchInput.value.trim() === '') {
-//      searchButton.disabled = true;
-//    } else {
-//      searchButton.disabled = false;
-//    }
-//  }
+ function updateSearchButtonState() {
+   if (searchInput.value.trim() === '') {
+     searchButton.disabled = true;
+   } else {
+     searchButton.disabled = false;
+   }
+ }
 
   // Dodaję obsługę zdarzenia input na polu input
- // searchInput.addEventListener('input', () => {
-//    updateSearchButtonState();
-//  });
+ searchInput.addEventListener('input', () => {
+   updateSearchButtonState();
+ });
 
   // Wywołaj funkcję na początku, aby ustawić stan przycisku
-//  updateSearchButtonState();
+ updateSearchButtonState();
 
   // Dodaj obsługę zdarzenia click do przycisku wyszukiwania
-//  searchButton.addEventListener('click', () => {
-//    searchButton.disabled = true;
-//  });
-// });
+ searchButton.addEventListener('click', () => {
+   searchButton.disabled = false;
+ });
+});
 
 
 
