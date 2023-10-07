@@ -5,9 +5,9 @@
 
 body {
   max-width: 1920px;
-  border: 5px solid rgb(31, 61, 95);
-  margin: 20px auto;
-  border-radius: 5px;
+  border: 7px solid rgb(31, 61, 95);
+  margin: 15px;
+  border-radius: 10px;
 }
 
 img {
@@ -75,6 +75,8 @@ input[type='text'] {
 
 .load-more-wrapper {
   display: flex;
+  flex-direction: column;
+  gap : 10px;
   align-items: center;
   justify-content: center;
   padding: 30px;

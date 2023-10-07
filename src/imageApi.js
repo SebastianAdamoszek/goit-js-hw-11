@@ -22,8 +22,8 @@ export async function searchImages(query, page = 1) {
     if (data.hits.length === 0) {
       throw new Error('No images found.');
     }
-
-    return data.hits;
+    
+    return data;
   } catch (error) {
     console.error('Błąd żądania HTTP:', error.message);
     throw new Error('An error occurred while fetching images. Please try again later.');
