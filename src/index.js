@@ -53,7 +53,7 @@ searchForm.addEventListener('submit', async function (e) {
 });
 
 // Obsługa przycisku "Load more"
-let page = 1;
+let page = 2;
 
 loadMoreBtn.addEventListener('click', async () => {
   const searchInput = searchForm.querySelector('input[name="searchQuery"]');
