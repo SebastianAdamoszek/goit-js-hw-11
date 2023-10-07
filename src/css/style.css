@@ -6,7 +6,7 @@
 body {
   max-width: 1920px;
   border: 7px solid rgb(31, 61, 95);
-  margin: 15px;
+  margin: 15px auto;
   border-radius: 10px;
 }
 
