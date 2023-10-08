@@ -26,9 +26,7 @@ p {
   color: white;
   text-align: center;
 }
-button {
-  cursor: pointer;
-}
+
 .search-form {
   padding: 20px 0;
 }
@@ -87,6 +85,7 @@ input[type='text'] {
 
 .load-more-btn {
   padding: 5px 20px;
+  cursor: pointer;
 }
 
 .photo-card {

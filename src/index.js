@@ -16,14 +16,16 @@ const lightbox = new SimpleLightbox('.gallery a', {
 });
 document.addEventListener('DOMContentLoaded', () => {
   const searchButton = document.querySelector('.search-btn');
-  const searchInput = document.querySelector('input[name="searchQuery"]');
-
+  const searchInput = document.querySelector('input[name="searchQuery"]'); 
+ 
   // Funkcja do aktualizacji dostępności przycisku
  function updateSearchButtonState() {
    if (searchInput.value.trim() === '') {
      searchButton.disabled = true;
+     searchButton.style.cursor = 'not-allowed'; // Dodaj tę linię
    } else {
      searchButton.disabled = false;
+     searchButton.style.cursor = 'pointer'; // Dodaj tę linię
    }
  }
 
@@ -39,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
  searchButton.addEventListener('click', () => {
    searchButton.disabled = false;
  });
+
 });
 
 
