@@ -94,8 +94,14 @@ input[type='text'] {
   box-shadow: 2 2 20px rgb(145, 170, 228);
   background-color: #a9c0f9;
   width: 320px;
+  transition-duration: .5s;
 }
-
+.photo-card:hover{
+  transform: scalex(1.03) rotateY(10deg) skewY(-4deg);
+  box-shadow: 50px 10px 10px rgba(0, 0, 0, 0.2);
+  transform-origin: left;
+  border-bottom-right-radius: 10%;
+}
 .info {
   display: flex;
   flex-direction: row;
