@@ -13,7 +13,10 @@ body {
 img {
   width: 320px;
   height: 200px;
-  border-radius: 5px;
+  border-radius: 15px;
+  transition-duration: .5s ;
+  border: 1px solid transparent;
+
 }
 
 p {
@@ -42,8 +45,7 @@ button {
 
 .info {
   display: flex;
-  flex-direction: column;
-  align-items: start;
+  flex-direction: row;
   gap: 5px;
 }
 
@@ -88,30 +90,39 @@ input[type='text'] {
 }
 
 .photo-card {
-  border: 2px solid #333;
+  border: 2px solid rgba(0, 0, 0, .3);
   border-radius: 10px;
   padding: 10px;
   box-shadow: 2 2 20px rgb(145, 170, 228);
   background-color: #a9c0f9;
   width: 320px;
   transition-duration: .5s;
+  cursor: pointer;
 }
-.photo-card:hover{
+ .photo-card:hover {
   transform: scalex(1.03) rotateY(10deg) skewY(-4deg);
   box-shadow: 50px 10px 10px rgba(0, 0, 0, 0.2);
   transform-origin: left;
   border-bottom-right-radius: 10%;
-}
-.info {
-  display: flex;
-  flex-direction: row;
 }
 
 .sl-image {
   border: 15px solid #282456;
   border-radius: 10px;
   padding: 10px;
-
   box-shadow: 5 5 20px rgb(145, 170, 228);
   background-color: #a9c0f9;
+  transition-duration: 1s;
+  width: 10%;
 }
+
+img:hover{
+  transform: scale(1.1) rotateY(-10deg) skewY(4deg);
+  box-shadow: 20px 20px 15px rgba(0, 0, 0, 0.5);
+  transform-origin: left;
+  border-radius: 5px;
+  margin-left: 10px;
+  border: 1px solid white;
+}
+
+
